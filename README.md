@@ -1,7 +1,4 @@
 # swe-house-rental
-SWE Project - House Rental
-
-# Short brief
 This is the Student Project of Group 1 : House Rental Management System.
 
 # Document space
