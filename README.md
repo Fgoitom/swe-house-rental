@@ -3,6 +3,11 @@ This is the Student Project of Group 1 : House Rental Management System.
 
 # Before run project please run this docker command in order to run database on your machine : 
 docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor -e MYSQL_DATABASE=houserental mysql
+docker build -t app .
+docker run app
+
+# Or you are too lazy you can run :
+docker-compose up
 
 # Document space
 https://mum0-my.sharepoint.com/:f:/r/personal/dinhhuy_dang_miu_edu/Documents/CS425-2023-06A-06D-01_Group1
