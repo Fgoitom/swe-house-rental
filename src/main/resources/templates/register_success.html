@@ -1,0 +1,24 @@
+<html lang="en">
+<head th:insert="~{fragments/htmlhead :: head (title='Registration')}">
+<body>
+    <div class="container">
+        <header th:insert="~{fragments/header :: header}"></header>
+        <div class="row">
+            <div th:insert="~{fragments/navigation :: navigation}"></div>
+
+            <div>
+                <div class="col">
+                    <div class="box" style="text-align: center;">
+                        <p>&nbsp;</p>
+                        You have signed up successfully!
+                        <br />
+                        <a th:href="@{/login}">Click here to Login</a>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+          <div th:insert="~{fragments/footer :: footer}"></div>
+      </div>
+      <div th:insert="~{fragments/scripts :: scripts}"></div>
+      </body>
+      </html>

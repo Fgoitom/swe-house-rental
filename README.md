@@ -1,44 +1,45 @@
-# swe-house-rental
-This is the Student Project of Group 1 : House Rental Management System.
+# Student Project - Group 6
 
-# Document space
-https://mum0-my.sharepoint.com/:f:/r/personal/dinhhuy_dang_miu_edu/Documents/CS425-2023-06A-06D-01_Group1
+The Jira instace is https://cs-425-student-project.atlassian.net
 
-# Jira board
-https://swe-group1.atlassian.net/jira/software/projects/HRS/boards/1/roadmap
+This is the Student Project of Group 6 : House Rental Management System.
 
-# Data and structure
-Here's the full implementation of the House Rental Management System problem statement, including the tables and their structure:
+## Running the system
 
-**Table: Property**
+### Running with Visual Studio code
 
-| Property ID | Landlord ID | Property Name | Number of Rooms | Pricing | Location |
-|-------------|-------------|---------------|-----------------|---------|----------|
-| 1           | 101         | Property A    | 3               | $1000   | City X   |
-| 2           | 102         | Property B    | 2               | $800    | City Y   |
-| 3           | 103         | Property C    | 4               | $1500   | City Z   |
+Checkout the Repository to your local machine.
+Open Visual Studio code and open the git repository folder.
+Install recommended extensions from Visual Studio Code ```  View -> Command Palette.. -> Run "EXtensions: Show recommended extensions"```
+Modify ```src/main/resources/application.properties``` file with the values for your mysql installation.
+Go to the menu Run and select "Start Debugging" or "Run without Debugging"
 
-**Table: User**
+### Running with command line 
 
-| User ID | User Type     | Username   | Password |
-|---------|---------------|------------|----------|
-| 1       | Administrator | admin      | ******** |
-| 101     | Landlord      | landlord1  | ******** |
-| 102     | Landlord      | landlord2  | ******** |
-| 201     | Customer      | customer1  | ******** |
-| 202     | Customer      | customer2  | ******** |
+Bash ``` ./mvnw spring-boot:run ```
+Windows Command Prompt ``` mvnw.cmd spring-boot:run ```
+ ## Guidelines
 
-**Table: Application**
+* Use documents folder to storing documents. Do not commit binary files.
+  * For text files, use markdown (.md) files. Use a markdown editor for updating .md files.
+  * For diagrams use draw.io diagrams.
 
-| Application ID | User ID | Property ID | Application Date |
-|----------------|---------|-------------|-----------------|
-| 1              | 201     | 1           | 2023-05-20      |
-| 2              | 202     | 2           | 2023-05-21      |
-| 3              | 201     | 3           | 2023-05-22      |
+## Folder Structure
 
-**Table: Contract**
+```
+└───documents                         - Documents Root
+    ├───diagrams                      - Diagram Files
+    └───requirements                  - Requirements Files
+```
 
-| Contract ID | Application ID | Landlord ID | Customer ID | Start Date | End Date   |
-|-------------|----------------|-------------|-------------|------------|------------|
-| 1           | 1              | 101         | 201         | 2023-06-01 | 2023-12-01 |
-| 2           | 2              | 102         | 202         | 2023-07-01 | 2024-01-01 |
+## Problem Statement
+
+[ProblemStatement.md](requirements/ProblemStatement.md)
+
+## Use Case Diagram
+
+<img src=documents/diagrams/UseCaseDiagram.svg/>
+
+## Context Diagram
+
+<img src=documents/diagrams/ContextDiagram.svg/>

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: mscs.hms.service.PropertyServiceTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in mscs.hms.service.PropertyServiceTests
