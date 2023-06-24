@@ -2,13 +2,13 @@ package miu.edu.service.impl;
 
 import miu.edu.repository.CompanyRepository;
 import miu.edu.repository.PersonRepository;
-import miu.edu.service.LegalEntityService;
+import miu.edu.service.PropertyOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
-import miu.edu.model.LegalEntity;
+import miu.edu.model.PropertyOwner;
 import miu.edu.model.Company;
 import miu.edu.model.Person;
 
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Service
-public class LegalEntityServiceImpl extends AbsBaseService implements LegalEntityService {
+public class PropertyOwnerServiceImpl extends AbsBaseService implements PropertyOwnerService {
     
     @Autowired
     PersonRepository personRepository;
@@ -25,23 +25,23 @@ public class LegalEntityServiceImpl extends AbsBaseService implements LegalEntit
     CompanyRepository companyRepository;
 
     @Override
-    public List<? extends LegalEntity> findAll() {
-        List<LegalEntity> legalEntities = new ArrayList<>();
+    public List<? extends PropertyOwner> findAll() {
+        List<PropertyOwner> legalEntities = new ArrayList<>();
         personRepository.findAll().forEach(legalEntities::add);
         companyRepository.findAll().forEach(legalEntities::add);
         return legalEntities;
     }
 
     @Override
-    public LegalEntity get(Integer id) {
-        LegalEntity legalEntity = personRepository.findById(id).orElse(null);
-        if(legalEntity == null){
-            legalEntity = companyRepository.findById(id).orElse(null);
+    public PropertyOwner get(Integer id) {
+        PropertyOwner PropertyOwner = personRepository.findById(id).orElse(null);
+        if(PropertyOwner == null){
+            PropertyOwner = companyRepository.findById(id).orElse(null);
         }
-        return legalEntity;
+        return PropertyOwner;
     }
 
-    public Page<? extends LegalEntity> getAll(String searchString, Integer page, Integer pageSize) {
+    public Page<? extends PropertyOwner> getAll(String searchString, Integer page, Integer pageSize) {
         PageRequest pageRequest = PageRequest.of(page, pageSize);
         Page<Company> resultCompany;
         Page<Person> resultPerson;
@@ -54,7 +54,7 @@ public class LegalEntityServiceImpl extends AbsBaseService implements LegalEntit
             resultCompany = companyRepository.searchCompany(searchString.toLowerCase(), pageRequest);
             resultPerson = personRepository.searchPerson(searchString.toLowerCase(), pageRequest);
         }
-        List<LegalEntity> resultList = new ArrayList<>();
+        List<PropertyOwner> resultList = new ArrayList<>();
         resultList.addAll(resultCompany.getContent());
         if(resultCompany.getNumberOfElements() < pageSize)
         {
@@ -62,7 +62,7 @@ public class LegalEntityServiceImpl extends AbsBaseService implements LegalEntit
             List<Person> personContent = resultPerson.getContent();
             resultList.addAll(personContent.subList(0, remainigPageSize <= personContent.size() ? remainigPageSize : personContent.size()));
         }
-        final Page<LegalEntity> pageResult = new PageImpl<>(resultList, pageRequest, resultCompany.getTotalElements() + resultPerson.getTotalElements());
+        final Page<PropertyOwner> pageResult = new PageImpl<>(resultList, pageRequest, resultCompany.getTotalElements() + resultPerson.getTotalElements());
         
         return pageResult;
     }

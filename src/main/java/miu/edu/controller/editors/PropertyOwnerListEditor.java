@@ -2,19 +2,19 @@ package miu.edu.controller.editors;
 
 import java.beans.PropertyEditorSupport;
 
-import miu.edu.service.LegalEntityService;
+import miu.edu.service.PropertyOwnerService;
 import org.springframework.util.StringUtils;
 import java.util.List;
 import java.util.ArrayList;
 import jakarta.annotation.Nullable;
-import miu.edu.model.LegalEntity;
+import miu.edu.model.PropertyOwner;
 
-public class LegalEntityListEditor extends PropertyEditorSupport{
-    LegalEntityService legalEntityService;
+public class PropertyOwnerListEditor extends PropertyEditorSupport{
+    PropertyOwnerService PropertyOwnerService;
 
 	boolean allowEmpty;
-    public LegalEntityListEditor(LegalEntityService legalEntityService, boolean allowEmpty) {
-        this.legalEntityService = legalEntityService;
+    public PropertyOwnerListEditor(PropertyOwnerService PropertyOwnerService, boolean allowEmpty) {
+        this.PropertyOwnerService = PropertyOwnerService;
         this.allowEmpty = allowEmpty;
 	}
 
@@ -26,9 +26,9 @@ public class LegalEntityListEditor extends PropertyEditorSupport{
 		}
 		else {
 			try {
-                List<LegalEntity> list = new ArrayList<>();
+                List<PropertyOwner> list = new ArrayList<>();
                 for(String idString : StringUtils.tokenizeToStringArray(text, ",")){
-                    list.add(legalEntityService.get(Integer.parseInt(idString)));
+                    list.add(PropertyOwnerService.get(Integer.parseInt(idString)));
                 }
 				setValue(list);
 			}

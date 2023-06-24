@@ -10,13 +10,13 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 @DiscriminatorValue("Person")
-public class Person extends LegalEntity{
+public class Person extends PropertyOwner{
     @NotEmpty
     private String firstName;
     @NotEmpty
     private String lastName;
     @Override
-    public String getLegalEntityName() {
+    public String getPropertyOwnerName() {
         if(lastName == null || lastName.isBlank()){
             if(firstName == null || firstName.isBlank()){
                 return null;   

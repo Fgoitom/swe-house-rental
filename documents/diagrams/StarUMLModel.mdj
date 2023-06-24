@@ -2170,7 +2170,7 @@
 											"top": 428,
 											"width": 131.16162109375,
 											"height": 13,
-											"text": "LegalEntity"
+											"text": "PropertyOwner"
 										},
 										{
 											"_type": "LabelView",
@@ -10790,7 +10790,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "LegalEntity",
+					"name": "PropertyOwner",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",

@@ -26,6 +26,6 @@ public class Landlord {
     @NotEmpty(message = "Name should not be Empty")
     private String name;
     @OneToOne
-    @JoinColumn(name = "legalEntityId", referencedColumnName = "id")
-    private LegalEntity legalEntity;    
+    @JoinColumn(name = "PropertyOwnerId", referencedColumnName = "id")
+    private PropertyOwner PropertyOwner;    
 }

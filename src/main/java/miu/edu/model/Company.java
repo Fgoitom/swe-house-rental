@@ -11,11 +11,11 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 @DiscriminatorValue("Company")
-public class Company extends LegalEntity{
+public class Company extends PropertyOwner{
     @NotEmpty
     private String companyName;
     @Override
-    public String getLegalEntityName() {
+    public String getPropertyOwnerName() {
         return getCompanyName();
     }
     @Override

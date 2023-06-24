@@ -27,6 +27,6 @@ public class Tenant {
     private List<Property> properties;
 
     @OneToOne
-    @JoinColumn(name = "legalEntityId", referencedColumnName = "id")
-    private LegalEntity legalEntity;    
+    @JoinColumn(name = "PropertyOwnerId", referencedColumnName = "id")
+    private PropertyOwner PropertyOwner;    
 }

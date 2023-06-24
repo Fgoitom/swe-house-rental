@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     @Query("select p from Person p where p.firstName =:searchString or " +
-            "p.lastName = :searchString or p.phoneNumber = :searchString or p.systemUser.username = :searchString or p.legalEntityName =:searchString")
+            "p.lastName = :searchString or p.phoneNumber = :searchString or p.systemUser.username = :searchString or p.PropertyOwnerName =:searchString")
     Page<Person> searchPerson(String searchString, PageRequest pageRequest);
 }

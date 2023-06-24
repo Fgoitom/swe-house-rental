@@ -3,11 +3,11 @@ package miu.edu.controller;
 import miu.edu.controller.editors.PropertyListEditor;
 import miu.edu.service.IUserService;
 import miu.edu.service.LandlordService;
-import miu.edu.service.LegalEntityService;
+import miu.edu.service.PropertyOwnerService;
 import miu.edu.service.PropertyService;
 import miu.edu.model.Landlord;
 import miu.edu.model.User;
-import miu.edu.dto.selectors.LegalEntitySelectorDTO;
+import miu.edu.dto.selectors.PropertyOwnerSelectorDTO;
 import miu.edu.dto.selectors.PropertySelectorDTO;
 
 import java.util.*;
@@ -33,7 +33,7 @@ public class LandlordController extends AbsEntityController<Landlord> {
     private LandlordService landlordService;
 
     @Autowired
-    private LegalEntityService legalEntityService;
+    private PropertyOwnerService PropertyOwnerService;
 
     @Autowired
     private PropertyService propertyService;
@@ -126,13 +126,13 @@ public class LandlordController extends AbsEntityController<Landlord> {
         Dictionary<String, List<?>> dictionary = new Hashtable<>();
         //Note used same attributeName "systemUser"
         dictionary.put("properties", propertyService.getProperties().stream().map(PropertySelectorDTO::new).collect(Collectors.toList()));
-        dictionary.put("legalEntity", legalEntityService.findAll().stream().map(LegalEntitySelectorDTO::new).collect(Collectors.toList()));
+        dictionary.put("PropertyOwner", PropertyOwnerService.findAll().stream().map(PropertyOwnerSelectorDTO::new).collect(Collectors.toList()));
         return dictionary;
     }
 
     private void saveUser(Landlord landlord) throws Exception{
         landlord = landlordService.save(landlord);
-        User user = landlord.getLegalEntity().getSystemUser();
+        User user = landlord.getPropertyOwner().getSystemUser();
         if(user == null){
             throw new Exception("Legal Entity does not have a User connected");
         }

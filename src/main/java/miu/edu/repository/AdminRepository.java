@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
-    @Query(value = "select a from Admin a , LegalEntity l where a.legalEntity = l and a.name =:searchString or l.legalEntityName =:searchString")
+    @Query(value = "select a from Admin a , PropertyOwner l where a.PropertyOwner = l and a.name =:searchString or l.PropertyOwnerName =:searchString")
     Page<Admin> searchAdmin(String searchString, PageRequest pageRequest);
 }

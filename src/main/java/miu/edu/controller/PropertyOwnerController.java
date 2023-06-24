@@ -2,8 +2,8 @@ package miu.edu.controller;
 
 import miu.edu.service.AddressService;
 import miu.edu.service.IUserService;
-import miu.edu.service.LegalEntityService;
-import miu.edu.model.LegalEntity;
+import miu.edu.service.PropertyOwnerService;
+import miu.edu.model.PropertyOwner;
 import miu.edu.dto.selectors.UserSelectorDTO;
 import miu.edu.dto.selectors.AddressSelectorDTO;
 
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LegalEntityController extends AbsEntityController<LegalEntity> {
+public class PropertyOwnerController extends AbsEntityController<PropertyOwner> {
     
     @Autowired
-    private LegalEntityService legalentityService;
+    private PropertyOwnerService PropertyOwnerService;
 
     @Autowired
     private IUserService userService;
@@ -41,12 +41,12 @@ public class LegalEntityController extends AbsEntityController<LegalEntity> {
         int currentPage = getCurrentPage(page);
         int pageSize = getPageSize(size);
         String searchString = getSearchString(search);
-        return getListEntitiesModelView(legalentityService.getAll(searchString, currentPage, pageSize));
+        return getListEntitiesModelView(PropertyOwnerService.getAll(searchString, currentPage, pageSize));
     }
 
     @Override
     public Class<?> getClassType(){
-        return LegalEntity.class;
+        return PropertyOwner.class;
     }
     @Override
     public String getEditViewPath(){

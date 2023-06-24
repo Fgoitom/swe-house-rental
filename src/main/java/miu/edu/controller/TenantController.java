@@ -5,7 +5,7 @@ import miu.edu.service.*;
 import miu.edu.model.Tenant;
 import miu.edu.model.User;
 import miu.edu.service.*;
-import miu.edu.dto.selectors.LegalEntitySelectorDTO;
+import miu.edu.dto.selectors.PropertyOwnerSelectorDTO;
 import miu.edu.dto.selectors.PropertySelectorDTO;
 import miu.edu.dto.selectors.PreferenceSelectorDTO;
 
@@ -32,7 +32,7 @@ public class TenantController extends AbsEntityController<Tenant> {
     private TenantService tenantService;
 
     @Autowired
-    private LegalEntityService legalEntityService;
+    private PropertyOwnerService PropertyOwnerService;
 
     @Autowired
     private PropertyService propertyService;
@@ -129,12 +129,12 @@ public class TenantController extends AbsEntityController<Tenant> {
         //Note used same attributeName "systemUser"
         dictionary.put("properties", propertyService.getProperties().stream().map(PropertySelectorDTO::new).collect(Collectors.toList()));
         dictionary.put("preference", preferenceService.findAll().stream().map(PreferenceSelectorDTO::new).collect(Collectors.toList()));
-        dictionary.put("legalEntity", legalEntityService.findAll().stream().map(LegalEntitySelectorDTO::new).collect(Collectors.toList()));
+        dictionary.put("PropertyOwner", PropertyOwnerService.findAll().stream().map(PropertyOwnerSelectorDTO::new).collect(Collectors.toList()));
         return dictionary;
     }
     private void saveUser(Tenant tenant) throws Exception{
         tenant = tenantService.save(tenant);
-        User user = tenant.getLegalEntity().getSystemUser();
+        User user = tenant.getPropertyOwner().getSystemUser();
         if(user == null){
             throw new Exception("Legal Entity does not have a User connected");
         }

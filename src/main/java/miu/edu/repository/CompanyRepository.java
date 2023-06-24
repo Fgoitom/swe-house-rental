@@ -7,7 +7,7 @@ import miu.edu.model.Company;
 import org.springframework.data.jpa.repository.Query;
 
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
-    @Query("select c from Company c, LegalEntity l , User u where c.legalEntityName = l.legalEntityName and l.systemUser.username = :searchString  or c.phoneNumber =:searchString or c.legalEntityName = :searchString or " +
+    @Query("select c from Company c, PropertyOwner l , User u where c.PropertyOwnerName = l.PropertyOwnerName and l.systemUser.username = :searchString  or c.phoneNumber =:searchString or c.PropertyOwnerName = :searchString or " +
             "c.companyName = :searchString")
     Page<Company> searchCompany(String searchString, PageRequest pageRequest);
 }

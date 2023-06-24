@@ -2,7 +2,7 @@ package miu.edu.controller;
 
 import miu.edu.service.AdminService;
 import miu.edu.service.IUserService;
-import miu.edu.dto.selectors.LegalEntitySelectorDTO;
+import miu.edu.dto.selectors.PropertyOwnerSelectorDTO;
 import miu.edu.model.Admin;
 import miu.edu.model.User;
 import miu.edu.dto.selectors.UserSelectorDTO;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import miu.edu.service.LegalEntityService;
+import miu.edu.service.PropertyOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +33,7 @@ public class AdminController extends AbsEntityController<Admin> {
     private IUserService userService;
 
     @Autowired
-    private LegalEntityService legalEntityService;
+    private PropertyOwnerService PropertyOwnerService;
 
     @GetMapping("/admins")
     public ModelAndView showCompanies(Model model,
@@ -118,13 +118,13 @@ public class AdminController extends AbsEntityController<Admin> {
         Dictionary<String, List<?>> dictionary = new Hashtable<>();
         //Note used same attributeName "systemUser"
         dictionary.put("systemUser", userService.findAllUsers().stream().map(UserSelectorDTO::new).collect(Collectors.toList()));
-        dictionary.put("legalEntity", legalEntityService.findAll().stream().map(LegalEntitySelectorDTO::new).collect(Collectors.toList()));
+        dictionary.put("PropertyOwner", PropertyOwnerService.findAll().stream().map(PropertyOwnerSelectorDTO::new).collect(Collectors.toList()));
         return dictionary;
     }
 
     private void saveUser(Admin admin) throws Exception{
         adminService.save(admin);
-        User user = admin.getLegalEntity().getSystemUser();
+        User user = admin.getPropertyOwner().getSystemUser();
         if(user == null){
             throw new Exception("Legal Entity does not have a User connected");
         }

@@ -1,4 +1,4 @@
-package miu.edu.helper;
+package miu.edu.config.sysinit;
 
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;

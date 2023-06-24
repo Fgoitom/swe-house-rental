@@ -11,15 +11,15 @@ import lombok.Setter;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="legalEntity_type", discriminatorType=DiscriminatorType.STRING)
-public abstract class LegalEntity {
+@DiscriminatorColumn(name="PropertyOwner_type", discriminatorType=DiscriminatorType.STRING)
+public abstract class PropertyOwner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @PhoneNumberConstraint
     private String phoneNumber;
 //    @Transient
-    private String legalEntityName;
+    private String PropertyOwnerName;
     @OneToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @Nullable
@@ -31,7 +31,7 @@ public abstract class LegalEntity {
     
     @Override
     public String toString() {
-        return "LegalEntity [id=" + id + ", phoneNumber=" + phoneNumber + ", legalEntityName=" + legalEntityName + ", systemUser=" + systemUser + "]";
+        return "PropertyOwner [id=" + id + ", phoneNumber=" + phoneNumber + ", PropertyOwnerName=" + PropertyOwnerName + ", systemUser=" + systemUser + "]";
     }
 
 }
