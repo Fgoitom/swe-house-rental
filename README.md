@@ -38,6 +38,9 @@ Windows Command Prompt ``` mvnw.cmd spring-boot:run ```
 
 ## Use Case Diagram
 
+# Before run project please run this docker command in order to run database on your machine : 
+docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=toor -e MYSQL_DATABASE=houserental mysql
+
 <img src=documents/diagrams/UseCaseDiagram.svg/>
 
 ## Context Diagram
