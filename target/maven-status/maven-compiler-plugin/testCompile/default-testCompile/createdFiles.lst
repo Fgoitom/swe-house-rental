@@ -1,6 +1,1 @@
-mscs/hms/service/PropertyServiceTests.class
-mscs/hms/service/UserServiceTests.class
-mscs/hms/StudentProjectApplicationTests.class
-mscs/hms/repository/UserRepositoryTests.class
-mscs/hms/repository/HouseRepositoryTest.class
-mscs/hms/repository/ApartmentRepositoryTest.class
+miu/edu/SweHouseRentalApplicationTests.class
